@@ -80,24 +80,36 @@ if (isset($_GET['act'])) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_sanpham($_GET['id']);
             }
-            $listdanhmuc = sanpham_loadall();
+            $listsanpham = sanpham_loadall("",0);
             include "sanpham/list.php";
             break;
         case 'suasp':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $dm = sanpham_loadone($_GET['id']);
+                $sanpham=sanpham_loadone($_GET['id']);
             }
-
+            $listdanhmuc = danhmuc_loadall();
             include "sanpham/update.php";
             break;
         case 'updatesp':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $tenloai = $_POST['tenloai'];
                 $id = $_POST['id'];
-                sanpham_update($id, $tenloai);
+                $iddm = $_POST['iddm'];
+                $tensp = $_POST['tensp'];
+                $giasp = $_POST['giasp'];
+                $mota = $_POST['mota'];
+                $hinh = $_FILES['hinh']['name'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                   // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                  } else {
+                  //  echo "Sorry, there was an error uploading your file.";
+                  }
+                sanpham_update($id,$iddm, $tensp,$giasp,$mota,$hinh);
                 $thongbao = "Cập thành công";
             }
-            $listdanhmuc = sanpham_loadall();
+            $listdanhmuc = danhmuc_loadall();
+            $listsanpham = sanpham_loadall();  
             include "sanpham/list.php";
             break;
         default:

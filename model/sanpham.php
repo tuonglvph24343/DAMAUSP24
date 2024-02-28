@@ -7,7 +7,7 @@ function delete_sanpham($id){
     $sql = "delete  from sanpham where id=".$id;
     pdo_execute($sql);
 }
-function sanpham_loadall($kyw, $iddm){
+function sanpham_loadall($kyw="", $iddm=0){
     $sql = "select * from sanpham where 1";
     if($kyw!= ""){
         $sql.= " and name LIKE '%".$kyw."%'";
@@ -24,7 +24,12 @@ function sanpham_loadone($id){
     $dm = pdo_query_one($sql);
     return $dm;
 }
-function sanpham_update($id,$tenloai){
-    $sql = "update  sanpham set name='" .$tenloai. "' where id=".$id;
+function sanpham_update($id,$iddm, $tensp,$giasp,$mota,$hinh){
+    if($hinh!= ""){
+        $sql = "update  sanpham set iddm='" .$iddm. "',  name='" .$tensp. "', price='" .$giasp. "',mota='" .$mota. "',img='" .$hinh. "' where id=".$id;
+    }else{
+        $sql = "update  sanpham set iddm='" .$iddm. "',  name='" .$tensp. "',price='" .$giasp. "',mota='" .$mota. "' where id=".$id;
+    }
+  
     pdo_execute($sql);
 }

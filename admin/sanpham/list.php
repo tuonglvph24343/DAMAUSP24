@@ -40,8 +40,8 @@
                             <?php
                             foreach ($listsanpham as $sanpham) {
                                 extract($sanpham);
-                                $suasp = "index.php?act=suasp&id=" . $id;
-                                $xoasp = "index.php?act=xoasp&id=" . $id;
+                                $suasp = "index.php?act=suasp&id=".$id;
+                                $xoasp = "index.php?act=xoasp&id=".$id;
                                 $hinhpath = "../upload/" . $img;
                                 if (is_file($hinhpath)) {
                                     $hinh =  "<img src='" . $hinhpath . "' height='80'>";
@@ -63,8 +63,8 @@
                                <td>' . $luotxem . '</td>
                                <td>' . $mota . '</td>
                                <td>
-                                   <a href="' . $suasp . '" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                   <a href="' . $xoasp . ' " class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                   <a href="'.$suasp.'" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                   <a href="'.$xoasp.'" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                </td>
                            </tr>
                                ';
