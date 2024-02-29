@@ -45,8 +45,10 @@
                 <a href='#' class='list-group-item'>Điện thoại</a> -->
      </div>
      <div class="panel-footer">
-         <form action="hang-hoa/liet-ke.php">
-             <input name="keywords" placeholder="Từ khóa tìm kiếm" class="form-control">
+         <form action="index.php?act=sanpham" method="post">
+             <input type="text" name="kyw" class="form-control">
+             <br>
+             <input type="submit" value="Tìm kiếm" name="timkiem">
          </form>
      </div>
  </div>
@@ -59,14 +61,14 @@
                 extract($top);
                 $img = $img_path . $img;
                 $linksp = "index.php?act=sanphamct&idsp=" . $id;
-                echo '<div class="row" style="margin-bottom: 20px !important;">
-                    <div class="col-xs-3">
-    <a href="' . $linksp . '">
-        <img src="' . $img . '" style="width:50px">
-    </a>
-</div>
-                    <div class="col-xs-7"><a href="' . $linksp . '">' . $name . '</a></div>
-                </div>';
+                echo '  <div class="row" style="margin-bottom: 20px !important;">
+                        <div class="col-xs-3">
+                        <a href="' . $linksp . '">
+                        <img src="' . $img . '" style="width:50px">
+                        </a>
+                        </div>
+                        <div class="col-xs-7"><a href="' . $linksp . '">' . $name . '</a></div>
+                        </div>';
             }
             ?>
          <!-- <div class="row" style="margin-bottom: 20px !important;">

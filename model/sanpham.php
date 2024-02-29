@@ -59,8 +59,13 @@ function load_sanpham_cungloai($id,$iddm)
 }
 function load_ten_dm($iddm)
 {
-    $sql = "select * from danhmuc where id= " . $iddm;
-    $dm = pdo_query_one($sql);
-    extract($dm);
-    return $name;
+    if($iddm >0){
+        $sql = "select * from danhmuc where id= " . $iddm;
+        $dm = pdo_query_one($sql);
+        extract($dm);
+        return $name;
+    }else{
+        return  "";
+    }
+   
 }
