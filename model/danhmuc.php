@@ -21,4 +21,10 @@ function danhmuc_update($id,$tenloai){
     $sql = "update  danhmuc set name='" .$tenloai. "' where id=".$id;
     pdo_execute($sql);
 }
+//trang chủ
+function danhmuc_loadall_home(){
+    $sql = "select * from danhmuc where 1 order by id desc limit 0,9";
+    $listdanhmuc = pdo_query($sql);
+    return   $listdanhmuc;
+}
 
