@@ -2,31 +2,51 @@
  <div class="panel panel-default nn-panel-login">
      <div class="panel-heading">TÀI KHOẢN</div>
      <div class="panel-body">
-         <form action="tai-khoan/dang-nhap.php" method="post">
+         <?php
+            if (isset($_SESSION['user'])) {
+                extract($_SESSION['user']);
+            ?>
              <div class="form-group">
-                 <div>Tên đăng nhập</div>
-                 <input name="ma_kh" class="form-control" value="">
+                 <div>Xin chào</div>
+
+                 <?= $user ?>
              </div>
              <div class="form-group">
-                 <div>Mật khẩu</div>
-                 <input name="mat_khau" type="password" class="form-control" value="">
+                 <li><a href="index.php?act=quenmk">Quên mật khẩu</a></li>
+                 <li><a href="index.php?act=edit_taikhoan">Cập nhập thông tin </a></li>
+                 <li><a href="admin/index.php">Đăng nhập admin </a></li>
+                 <li><a href="index.php?act=thoat">Thoát </a></li>
              </div>
-             <div class="form-group">
-                 <div class="form-control">
-                     <label class="checkbox-inline">
-                         <input name="ghi_nho" type="checkbox" checked>
-                         Ghi nhớ tài khoản?
-                     </label>
+         <?php
+            } else {
+
+            ?>
+             <form action="index.php?act=dangnhap" method="post">
+                 <div class="form-group">
+                     <div>Tên đăng nhập</div>
+                     <input name="user" class="form-control" value="">
                  </div>
-             </div>
+                 <div class="form-group">
+                     <div>Mật khẩu</div>
+                     <input name="pass" type="password" class="form-control" value="">
+                 </div>
+                 <div class="form-group">
+                     <div class="form-control">
+                         <label class="checkbox-inline">
+                             <input name="ghi_nho" type="checkbox" checked>
+                             Ghi nhớ tài khoản?
+                         </label>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <input type="submit" value="Đăng nhập" name="dangnhap" class="btn btn-default">
+                 </div>
+             </form>
              <div class="form-group">
-                 <button name="btn_login" class="btn btn-default">Đăng nhập</button>
+                 <li><a href="index.php?act=quenmk">Quên mật khẩu</a></li>
+                 <li><a href="index.php?act=dangky">Đăng ký thành viên</a></li>
              </div>
-             <div class="form-group">
-                 <li><a href="tai-khoan/quen-mk.php">Quên mật khẩu</a></li>
-                 <li><a href="tai-khoan/dang-ky.php">Đăng ký thành viên</a></li>
-             </div>
-         </form>
+         <?php } ?>
      </div>
  </div>
  <!--CATALOG-->

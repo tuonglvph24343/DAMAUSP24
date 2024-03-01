@@ -44,7 +44,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="index.php?act=listdm">Danh mục</a></li>
-                            <li><a href="index.php?act=addsp">Hàng hoá</a></li>
+                            <li><a href="index.php?act=listsp">Hàng hoá</a></li>
                             <li><a href="index.php?act=dskh">Khách hàng</a></li>
                             <li><a href="index.php?act=dsbl">Bình luận</a></li>
                             <li><a href="index.php?act=thongke">Thống kê</a></li>

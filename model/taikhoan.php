@@ -1,29 +1,36 @@
 <?php
 // require_once 'pdo.php';
 
-function user_insert($username, $password, $email){
-    $sql = "INSERT INTO user(username, password, email) VALUES (?, ?, ?)";
-    pdo_execute($sql, $username, $password, $email);
+function taikhoan_insert($user, $pass, $email){
+    $sql = "INSERT INTO taikhoan (user, pass, email) VALUES ('$user', '$pass', '$email')";
+    pdo_execute($sql);
+}
+function checkuser($user,$pass){
+    $sql="Select * from taikhoan where user='".$user."' and pass='".$pass."'";
+    $sp=pdo_query_one($sql);
+    return $sp;
 }
 
-function user_update($username,$password,$email,$diachi,$dienthoai,$role,$id){
-    $sql = "UPDATE user SET username=?,password=?,email=?,diachi=?,dienthoai=?,role=? WHERE id=?";
-    pdo_execute($sql,$username,$password,$email,$diachi,$dienthoai,$role,$id);    
-}
+function editAccount($id,$user, $email, $pass, $tel, $address)
+    {
+        $sql = "UPDATE taikhoan SET user='$user', email = '$email', pass = '$pass', tel = '$tel', address = '$address' where id=".$id;
+        pdo_execute($sql);
+    }
+    function checkemail($email){
+        $sql="Select * from taikhoan where email='".$email."'";
+        $sp=pdo_query_one($sql);
+        return $sp;
+    }
+// function user_update($username,$password,$email,$diachi,$dienthoai,$role,$id){
+//     $sql = "UPDATE user SET username=?,password=?,email=?,diachi=?,dienthoai=?,role=? WHERE id=?";
+//     pdo_execute($sql,$username,$password,$email,$diachi,$dienthoai,$role,$id);    
+// }
 
-function checkuser($username,$password){
-    $sql="Select * from user where username=? and password=?";
-    return pdo_query_one($sql, $username,$password);
-    // if(is_array($kq)&&(count($kq))){
-    //     return $kq["id"];
-    // }else{
-    //     return 0;
-    // }
-}
-function get_user($id){
-    $sql="Select * from user where id=? ";
-    return pdo_query_one($sql, $id);
-}
+
+// function get_user($id){
+//     $sql="Select * from user where id=? ";
+//     return pdo_query_one($sql, $id);
+// }
 
 // function user_update($ma_kh, $mat_khau, $ho_ten, $email, $hinh, $kich_hoat, $vai_tro){
 //     $sql = "UPDATE user SET mat_khau=?,ho_ten=?,email=?,hinh=?,kich_hoat=?,vai_tro=? WHERE ma_kh=?";
