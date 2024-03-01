@@ -14,7 +14,7 @@ if (is_file($hinhpath)) {
   <h4 class="alert alert-info">Cập nhập tin tức</h3>
     <form action="index.php?act=updatetintuc" method="post" enctype="multipart/form-data">
     <label>Danh mục tin tức</label> <br />
-    <select name="iddm" style="padding: 4px;">
+    <select name="iddm" style="padding: 4px;" class="form-control">
         <?php
         foreach ($listdanhmuc as $danhmuc) {
           extract($danhmuc);

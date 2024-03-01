@@ -150,6 +150,7 @@ if (isset($_GET['act'])) {
                 delete_tintuc($_GET['id']);
             }
             $listdanhmuc = tintuc_loadall();
+            $listdanhmuctintuc = danhmuctintuc_loadall();  //bổ sung
             include "tintuc/list.php";
             break;
         case 'suatintuc':
