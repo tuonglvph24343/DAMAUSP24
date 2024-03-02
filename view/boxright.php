@@ -8,7 +8,6 @@
             ?>
              <div class="form-group">
                  <div>Xin chào</div>
-
                  <?= $user ?>
              </div>
              <div class="form-group">
@@ -60,9 +59,6 @@
                 echo '<a href="' . $linkdm . '" class="list-group-item">' . $name . '</a>';
             }
             ?>
-         <!-- <a href="" class='list-group-item'>Đồng hồ đeo tay</a>
-                <a href='#' class='list-group-item'>Máy tính xách tay</a>
-                <a href='#' class='list-group-item'>Điện thoại</a> -->
      </div>
      <div class="panel-footer">
          <form action="index.php?act=sanpham" method="post">
@@ -91,25 +87,5 @@
                         </div>';
             }
             ?>
-         <!-- <div class="row" style="margin-bottom: 20px !important;">
-                    <div class="col-xs-3"><img src="images/products/1111.jpg" style="width:50px"></div>
-                    <div class="col-xs-7"><a href="#">Tên sản phẩm</a></div>
-                </div>
-                <div class='row' style="margin-bottom: 20px !important;">
-                    <div class='col-xs-3'><img src='images/products/1111.jpg' style="width:50px"></div>
-                    <div class='col-xs-7'><a href='#'>Tên sản phẩm</a></div>
-                </div>
-                <div class='row' style="margin-bottom: 20px !important;">
-                    <div class='col-xs-3'><img src='images/products/1111.jpg' style="width:50px"></div>
-                    <div class='col-xs-7'><a href='#'>Tên sản phẩm</a></div>
-                </div>
-                <div class='row' style="margin-bottom: 20px !important;">
-                    <div class='col-xs-3'><img src='images/products/1111.jpg' style="width:50px"></div>
-                    <div class='col-xs-7'><a href='#'>Tên sản phẩm</a></div>
-                </div>
-                <div class='row' style="margin-bottom: 20px !important;">
-                    <div class='col-xs-3'><img src='images/products/1111.jpg' style="width:50px"></div>
-                    <div class='col-xs-7'><a href='#'>Tên sản phẩm</a></div>
-                </div> -->
      </div>
  </div>
