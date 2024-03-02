@@ -1,7 +1,7 @@
 <?php
 require_once 'pdo.php';
 
-function thong_ke_hang_hoa(){
+function  loadall_thongkes(){
     $sql = "SELECT lo.ma_loai, lo.ten_loai,"
             . " COUNT(*) so_luong,"
             . " MIN(hh.don_gia) gia_min,"
@@ -13,14 +13,10 @@ function thong_ke_hang_hoa(){
     return pdo_query($sql);
 }
 
-function thong_ke_binh_luan(){
-    $sql = "SELECT hh.ma_hh, hh.ten_hh,"
-            . " COUNT(*) so_luong,"
-            . " MIN(bl.ngay_bl) cu_nhat,"
-            . " MAX(bl.ngay_bl) moi_nhat"
-            . " FROM binh_luan bl "
-            . " JOIN hang_hoa hh ON hh.ma_hh=bl.ma_hh "
-            . " GROUP BY hh.ma_hh, hh.ten_hh"
-            . " HAVING so_luong > 0";
-    return pdo_query($sql);
+function loadall_thongke(){
+    $sql="select danhmuc.id as madm,danhmuc.name as tendm, count(sanpham.id) as countsp, min(sanpham.price) as minprice, max(sanpham.price) as maxprice, avg(sanpham.price) as avgprice";
+    $sql .=" from sanpham left join danhmuc on danhmuc.id=sanpham.iddm";
+    $sql .= " group by danhmuc.id order by danhmuc.id desc";
+    $listtk=pdo_query($sql);
+    return $listtk;
 }

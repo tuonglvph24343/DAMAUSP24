@@ -6,7 +6,7 @@ include "model/sanpham.php";
 include "view/header.php";
 include "global.php";
 include "model/danhmuc.php";
-
+if (!isset($_SESSION['mycart'])) $_SESSION['mycart'] = [];
 $spnew = sanpham_loadall_home();
 $dmnew = danhmuc_loadall_home();
 $dstop10 = sanpham_loadall_home_top10();
@@ -104,7 +104,33 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             session_unset();
             header('location: index.php');
             break;
-
+        case 'addtocart':
+            if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $img = $_POST['img'];
+                $price = $_POST['price'];
+                $soluong = 1;
+                $ttien = $soluong * $price;
+                $spadd = [$id, $name, $img, $price, $soluong, $ttien];
+                array_push($_SESSION['mycart'], $spadd);
+            }
+            include "view/cart/viewcart.php";
+            break;
+        case 'delcart':
+            if (isset($_GET['idcart'])) {
+               array_splice($_SESSION['mycart'], $_GET['idcart'], 1);
+            } else {
+                $_SESSION['mycart'] = [];
+            }
+            header('location: index.php?act=viewcart');
+            break;
+        case 'viewcart':
+            include "view/cart/viewcart.php";
+            break;
+        case 'bill':
+            include "view/cart/bill.php";
+            break;
         default:
             include "view/home.php";
             break;

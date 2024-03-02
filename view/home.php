@@ -50,19 +50,25 @@
                     $mr = "mr";
                 }
                 echo '<div class="col-sm-6 col-md-4 ' . $mr . '">
-               <div class="thumbnail text-center">
-                   <a href="' . $linksp . '">
-                       <img src="' . $hinh . '" style="width:150px">
-                   </a>
-                   <div class="caption text-left">
-                       <h3>$ ' . $price . ' </h3>
-                       <p>
-                       <a href="' . $linksp . '">
-                       
-                   </a>' . $name . '
-                       </p>
-                   </div>
-               </div>
+                <div class="thumbnail text-center">
+                <a href="' . $linksp . '">
+                    <img src="' . $hinh . '" style="width:150px">
+                </a>
+                <div class="caption text-left">
+                    <h3>$ ' . $price . ' </h3>
+                    <p>
+                        <a href="' . $linksp . '">
+                        </a>' . $name . '
+                    </p>
+                </div>
+                <form action="index.php?act=addtocart" method="post">
+                <input type="hidden" value="' . $id . '" name="id">
+                <input type="hidden" value="' . $name . '" name="name">
+                <input type="hidden" value="' . $img . '"name="img">
+                <input type="hidden" value="' . $price . '" name="price">
+                <input type="submit" name="addtocart" value="Thêm vào giỏ hàng">
+            </form>
+            </div>
            </div>';
                 $i += 1;
             }

@@ -5,6 +5,8 @@ include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/tintuc.php";
 include "../model/danhmuctintuc.php";
+include "../model/taikhoan.php";
+include "../model/thong-ke.php";
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -182,9 +184,19 @@ if (isset($_GET['act'])) {
             $listdanhmuctintuc = danhmuctintuc_loadall();  //bổ sung
             include "tintuc/list.php";
             break;
-
+        case 'dskh':
+            $listtk = taikhoan_loadall();
+            include "taikhoan/list.php";
+            break;
+        case 'thongke':
+            $listthongke = loadall_thongke();
+            include "thongke/list.php";
+            break;
+            case 'bieudo':
+                $listthongke = loadall_thongke();
+                include "thongke/bieudo.php";
+                break;
         default:
-
             include "home.php";
             break;
     }
